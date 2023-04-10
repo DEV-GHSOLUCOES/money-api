@@ -1,4 +1,4 @@
-package com.gh.ghmoneyapi;
+package com.gh.ghmoney.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +8,7 @@ public class GhmoneyApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GhmoneyApiApplication.class, args);
+		
 	}
 
 }
