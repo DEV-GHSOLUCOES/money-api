@@ -27,25 +27,40 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
+	
+	/**
+	 * @author Glecio Heybel
+	 * @return lista de categorias
+	 */
 	@GetMapping
 	public List<Categoria> listarCategorias() {
 		return categoriaRepository.findAll();
 
 	}
 
+	/**
+	 * @author Glecio Heybel
+	 * @param categoria
+	 * @param response
+	 * @return categoria
+	 */
 	@PostMapping
 	public ResponseEntity<Categoria> criarCategoria( @Valid @RequestBody Categoria categoria, HttpServletResponse response) {
 		Categoria categoriaSalva = categoriaRepository.save(categoria);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigo}")
-				.buildAndExpand(categoriaSalva.getCodigo()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigo}").buildAndExpand(categoriaSalva.getCodigo()).toUri();
 		response.setHeader("Location", uri.toASCIIString());
 
 		return ResponseEntity.created(uri).body(categoriaSalva);
 
 	}
 
+	/**
+	 * @author Glecio Heybel
+	 * @param codigo
+	 * @return categoria
+	 */
 	@GetMapping("/{codigo}")
-	public ResponseEntity<Categoria> buscarPorCodigo(@PathVariable Long codigo) {
+	public ResponseEntity<Categoria> buscarCategoriaPorCodigo(@PathVariable Long codigo) {
 		Optional<Categoria> categoria = categoriaRepository.findById(codigo);
 		return categoria.isPresent() ? ResponseEntity.ok(categoria.get()) : ResponseEntity.notFound().build();
 
