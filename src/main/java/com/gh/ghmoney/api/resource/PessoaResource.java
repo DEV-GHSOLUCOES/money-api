@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gh.ghmoney.api.event.RecursoCriadoEvent;
 import com.gh.ghmoney.api.model.Pessoa;
 import com.gh.ghmoney.api.repository.PessoaRepository;
+import com.gh.ghmoney.api.service.PessoaService;
 
 @RestController
 @RequestMapping("/pessoas")
@@ -32,6 +34,9 @@ public class PessoaResource {
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
+	
+	@Autowired
+	private PessoaService pessoaService;
 
 	/**
 	 * @author Glecio Heybel
@@ -76,5 +81,10 @@ public class PessoaResource {
 	public void removePessoa(@PathVariable Long codigo) {
 		pessoaRepository.deleteById(codigo);
 	}
-
+	
+	@PutMapping("/{codigo}")
+	public ResponseEntity<Pessoa> atualizarPessoa(@PathVariable Long codigo, @RequestBody @Valid Pessoa pessoa){
+		Pessoa pessoaSalva = this.pessoaService.atualizar(codigo, pessoa);
+		  return ResponseEntity.ok(pessoaSalva);
+	}
 }
