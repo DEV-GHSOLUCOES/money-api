@@ -32,7 +32,7 @@ public class PessoaService {
 		
 	}
 
-	private Pessoa buscaPessoaPorCodigo(Long codigo) {
+	public  Pessoa buscaPessoaPorCodigo(Long codigo) {
 		Optional<Pessoa> pessoaSalva = this.pessoaRepository.findById(codigo);
 		return pessoaSalva.orElseThrow(() -> new EmptyResultDataAccessException(1));
 	}

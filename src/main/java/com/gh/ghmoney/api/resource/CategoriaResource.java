@@ -1,6 +1,5 @@
 package com.gh.ghmoney.api.resource;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.gh.ghmoney.api.event.RecursoCriadoEvent;
 import com.gh.ghmoney.api.model.Categoria;
