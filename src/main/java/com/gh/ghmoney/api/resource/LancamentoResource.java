@@ -7,7 +7,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
@@ -26,6 +25,7 @@ import com.gh.ghmoney.api.event.RecursoCriadoEvent;
 import com.gh.ghmoney.api.exceptionhandler.GhMoneyExceptionHandler.Erro;
 import com.gh.ghmoney.api.model.Lancamento;
 import com.gh.ghmoney.api.repository.LancamentoRepository;
+import com.gh.ghmoney.api.repository.filter.LancamentoFilter;
 import com.gh.ghmoney.api.service.LancamentoService;
 import com.gh.ghmoney.api.service.exception.PessoaInexistenteOuInativaException;
 
@@ -47,8 +47,8 @@ public class LancamentoResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	public List<Lancamento> listarLancamentos(){
-		return lancamentoRepository.findAll();
+	public List<Lancamento> Pesquisar(LancamentoFilter lancamentoFilter){
+		return lancamentoRepository.filtrar(lancamentoFilter);
 		
 	}
 	
