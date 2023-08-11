@@ -69,7 +69,7 @@ public class LancamentoResource {
 	
 	
 	/**
-	 * @author Glecio
+	 * @author Glecio Santos
 	 *
 	 * Exception para nao salvar lancamento com pessoa inexistente ou inativa
 	 * @param ex
