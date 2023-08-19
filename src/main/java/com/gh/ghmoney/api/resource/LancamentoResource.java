@@ -51,7 +51,7 @@ public class LancamentoResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	public Page<Lancamento> Pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable){
+	public Page<Lancamento> filtrarLacamento(LancamentoFilter lancamentoFilter, Pageable pageable){
 		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
 		
 	}
