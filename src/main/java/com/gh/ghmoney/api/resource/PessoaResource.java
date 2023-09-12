@@ -94,4 +94,20 @@ public class PessoaResource {
 		pessoaService.atualizarPropriedadeAtivo(codigo, ativo);
 		
 	}
+	
+	/*
+	 * @PostMapping("/signin") public ResponseEntity<?> signin(@RequestBody
+	 * AuthenticationRequest authenticationRequest) { try { Authentication
+	 * authentication = authenticationManager.authenticate( new
+	 * UsernamePasswordAuthenticationToken( authenticationRequest.getLogin(),
+	 * authenticationRequest.getPassword() ) );
+	 * 
+	 * UserDetails userDetails =
+	 * userDetailsService.loadUserByUsername(authenticationRequest.getLogin());
+	 * String token = jwtUtil.generateToken(userDetails);
+	 * 
+	 * return ResponseEntity.ok(new AuthenticationResponse(token)); } catch
+	 * (UsernameNotFoundException e) { return
+	 * ResponseEntity.badRequest().body("Invalid credentials"); } }
+	 */
 }
