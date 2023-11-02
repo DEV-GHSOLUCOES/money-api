@@ -31,6 +31,7 @@ import com.gh.ghmoney.api.exceptionhandler.GhMoneyExceptionHandler.Erro;
 import com.gh.ghmoney.api.model.Lancamento;
 import com.gh.ghmoney.api.repository.LancamentoRepository;
 import com.gh.ghmoney.api.repository.filter.LancamentoFilter;
+import com.gh.ghmoney.api.repository.projection.ResumoLancamento;
 import com.gh.ghmoney.api.service.LancamentoService;
 import com.gh.ghmoney.api.service.exception.PessoaInexistenteOuInativaException;
 
@@ -57,6 +58,14 @@ public class LancamentoResource {
 		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
 		
 	}
+	
+	@GetMapping(params = "resumo")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and hasAuthority('SCOPE_read')")
+	public Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable){
+		return lancamentoRepository.resumir(lancamentoFilter, pageable);
+		
+	}
+	
 	
 	@GetMapping("/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and hasAuthority('SCOPE_read')")
